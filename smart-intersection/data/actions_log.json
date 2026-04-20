@@ -1,0 +1,5 @@
+{ "actions": [
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-19 19:30:23" }
+,
+  { "controllerId": "TC-001", "action": "PEDESTRIAN_CYCLE", "timestamp": "2026-04-19 21:37:28" }
+] }
