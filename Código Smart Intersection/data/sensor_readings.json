@@ -1,0 +1,167 @@
+{ "sensor_readings": [
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-20 22:04:12" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 11:48:46" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 11:50:07" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 11:57:05" }
+,
+  { "sensorId": "VS-01", "distance": 18,5, "detected": true, "timestamp": "2026-04-21 11:57:12" }
+,
+  { "sensorId": "VS-01", "distance": 18,7, "detected": true, "timestamp": "2026-04-21 11:57:43" }
+,
+  { "sensorId": "VS-01", "distance": 18,7, "detected": true, "timestamp": "2026-04-21 11:57:47" }
+,
+  { "sensorId": "VS-01", "distance": 18,7, "detected": true, "timestamp": "2026-04-21 11:57:51" }
+,
+  { "sensorId": "VS-01", "distance": 18,7, "detected": true, "timestamp": "2026-04-21 11:57:53" }
+,
+  { "sensorId": "VS-01", "distance": 18,7, "detected": true, "timestamp": "2026-04-21 11:58:18" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 14:01:37" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 14:07:47" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 14:09:38" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 14:09:50" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 14:12:49" }
+,
+  { "sensorId": "VS-01", "distance": -1,0, "detected": true, "timestamp": "2026-04-21 14:15:15" }
+,
+  { "sensorId": "VS-01", "distance": 6,0, "detected": true, "timestamp": "2026-04-21 14:27:06" }
+,
+  { "sensorId": "VS-01", "distance": 10,6, "detected": true, "timestamp": "2026-04-21 14:27:45" }
+,
+  { "sensorId": "VS-01", "distance": 12,1, "detected": true, "timestamp": "2026-04-21 14:27:59" }
+,
+  { "sensorId": "VS-01", "distance": 6,0, "detected": true, "timestamp": "2026-04-21 14:28:05" }
+,
+  { "sensorId": "VS-01", "distance": 4,0, "detected": true, "timestamp": "2026-04-21 14:28:15" }
+,
+  { "sensorId": "VS-01", "distance": 5,7, "detected": true, "timestamp": "2026-04-21 14:32:02" }
+,
+  { "sensorId": "VS-01", "distance": 5,2, "detected": true, "timestamp": "2026-04-21 14:32:09" }
+,
+  { "sensorId": "VS-01", "distance": 3,7, "detected": true, "timestamp": "2026-04-21 14:32:19" }
+,
+  { "sensorId": "VS-01", "distance": 6,3, "detected": true, "timestamp": "2026-04-21 16:01:10" }
+,
+  { "sensorId": "VS-01", "distance": 19,6, "detected": true, "timestamp": "2026-04-21 16:36:12" }
+,
+  { "sensorId": "VS-01", "distance": 10,9, "detected": true, "timestamp": "2026-04-21 19:35:27" }
+,
+  { "sensorId": "VS-01", "distance": 3,1, "detected": true, "timestamp": "2026-04-21 19:35:56" }
+,
+  { "sensorId": "VS-01", "distance": 9,6, "detected": true, "timestamp": "2026-04-21 19:36:21" }
+,
+  { "sensorId": "VS-01", "distance": 3,4, "detected": true, "timestamp": "2026-04-21 19:36:29" }
+,
+  { "sensorId": "VS-01", "distance": 11,6, "detected": true, "timestamp": "2026-04-21 19:42:26" }
+,
+  { "sensorId": "VS-01", "distance": 6,6, "detected": true, "timestamp": "2026-04-21 19:42:40" }
+,
+  { "sensorId": "VS-01", "distance": 10,6, "detected": true, "timestamp": "2026-04-21 19:42:52" }
+,
+  { "sensorId": "VS-01", "distance": 3,7, "detected": true, "timestamp": "2026-04-21 19:43:05" }
+,
+  { "sensorId": "VS-01", "distance": 2,4, "detected": true, "timestamp": "2026-04-21 19:44:18" }
+,
+  { "sensorId": "VS-01", "distance": 7,0, "detected": true, "timestamp": "2026-04-21 19:44:35" }
+,
+  { "sensorId": "VS-01", "distance": 5,0, "detected": true, "timestamp": "2026-04-21 19:58:22" }
+,
+  { "sensorId": "VS-01", "distance": 8,5, "detected": true, "timestamp": "2026-04-21 19:59:26" }
+,
+  { "sensorId": "VS-01", "distance": 18,0, "detected": true, "timestamp": "2026-04-21 19:59:32" }
+,
+  { "sensorId": "VS-01", "distance": 3,1, "detected": true, "timestamp": "2026-04-21 19:59:37" }
+,
+  { "sensorId": "VS-01", "distance": 6,0, "detected": true, "timestamp": "2026-04-21 19:59:58" }
+,
+  { "sensorId": "VS-01", "distance": 6,8, "detected": true, "timestamp": "2026-04-21 20:00:20" }
+,
+  { "sensorId": "VS-01", "distance": 5,6, "detected": true, "timestamp": "2026-04-21 20:00:23" }
+,
+  { "sensorId": "VS-01", "distance": 14,7, "detected": true, "timestamp": "2026-04-21 20:18:02" }
+,
+  { "sensorId": "VS-01", "distance": 10,7, "detected": true, "timestamp": "2026-04-21 20:18:07" }
+,
+  { "sensorId": "VS-01", "distance": 16,4, "detected": true, "timestamp": "2026-04-21 20:18:50" }
+,
+  { "sensorId": "VS-01", "distance": 10,0, "detected": true, "timestamp": "2026-04-21 20:18:55" }
+,
+  { "sensorId": "VS-01", "distance": 19,0, "detected": true, "timestamp": "2026-04-21 20:19:03" }
+,
+  { "sensorId": "VS-01", "distance": 14,0, "detected": true, "timestamp": "2026-04-21 20:19:35" }
+,
+  { "sensorId": "VS-01", "distance": 7,6, "detected": true, "timestamp": "2026-04-21 20:19:43" }
+,
+  { "sensorId": "VS-01", "distance": 7,2, "detected": true, "timestamp": "2026-04-21 20:19:50" }
+,
+  { "sensorId": "VS-01", "distance": 9,6, "detected": true, "timestamp": "2026-04-21 20:23:08" }
+,
+  { "sensorId": "VS-01", "distance": 10,3, "detected": true, "timestamp": "2026-04-21 20:23:12" }
+,
+  { "sensorId": "VS-01", "distance": 6,0, "detected": true, "timestamp": "2026-04-21 21:30:11" }
+,
+  { "sensorId": "VS-01", "distance": 7,9, "detected": true, "timestamp": "2026-04-21 21:30:16" }
+,
+  { "sensorId": "VS-01", "distance": 13,0, "detected": true, "timestamp": "2026-04-21 21:30:20" }
+,
+  { "sensorId": "VS-01", "distance": 11,6, "detected": true, "timestamp": "2026-04-21 21:36:02" }
+,
+  { "sensorId": "VS-01", "distance": 7,6, "detected": true, "timestamp": "2026-04-21 21:36:06" }
+,
+  { "sensorId": "VS-01", "distance": 3,3, "detected": true, "timestamp": "2026-04-21 21:36:09" }
+,
+  { "sensorId": "VS-01", "distance": 4,7, "detected": true, "timestamp": "2026-04-28 09:05:46" }
+,
+  { "sensorId": "VS-01", "distance": 7,8, "detected": true, "timestamp": "2026-04-28 09:05:52" }
+,
+  { "sensorId": "VS-01", "distance": 14,9, "detected": true, "timestamp": "2026-04-28 09:05:57" }
+,
+  { "sensorId": "VS-01", "distance": 4,0, "detected": true, "timestamp": "2026-04-28 09:06:03" }
+,
+  { "sensorId": "VS-01", "distance": 6,6, "detected": true, "timestamp": "2026-04-28 09:06:42" }
+,
+  { "sensorId": "VS-01", "distance": 5,3, "detected": true, "timestamp": "2026-04-28 09:06:45" }
+,
+  { "sensorId": "VS-01", "distance": 8,2, "detected": true, "timestamp": "2026-04-28 09:06:51" }
+,
+  { "sensorId": "VS-01", "distance": 9,6, "detected": true, "timestamp": "2026-04-28 09:06:56" }
+,
+  { "sensorId": "VS-01", "distance": 14,1, "detected": true, "timestamp": "2026-04-28 09:07:07" }
+,
+  { "sensorId": "VS-01", "distance": 13,3, "detected": true, "timestamp": "2026-04-28 09:07:14" }
+,
+  { "sensorId": "VS-01", "distance": 11,4, "detected": true, "timestamp": "2026-04-28 09:07:17" }
+,
+  { "sensorId": "VS-01", "distance": 18,0, "detected": true, "timestamp": "2026-04-28 09:07:24" }
+,
+  { "sensorId": "VS-01", "distance": 18,0, "detected": true, "timestamp": "2026-04-28 09:07:32" }
+,
+  { "sensorId": "VS-01", "distance": 19,0, "detected": true, "timestamp": "2026-04-28 09:07:40" }
+,
+  { "sensorId": "VS-01", "distance": 5,0, "detected": true, "timestamp": "2026-04-28 15:15:52" }
+,
+  { "sensorId": "VS-01", "distance": 9,1, "detected": true, "timestamp": "2026-04-28 15:15:53" }
+,
+  { "sensorId": "VS-01", "distance": 18,0, "detected": true, "timestamp": "2026-04-28 15:15:55" }
+,
+  { "sensorId": "VS-01", "distance": 3,1, "detected": true, "timestamp": "2026-04-28 15:16:02" }
+,
+  { "sensorId": "VS-01", "distance": 2,4, "detected": true, "timestamp": "2026-04-28 15:37:32" }
+,
+  { "sensorId": "VS-01", "distance": 7,5, "detected": true, "timestamp": "2026-04-28 15:37:33" }
+,
+  { "sensorId": "VS-01", "distance": 3,4, "detected": true, "timestamp": "2026-04-28 15:37:34" }
+,
+  { "sensorId": "VS-01", "distance": 9,5, "detected": true, "timestamp": "2026-04-28 15:37:36" }
+,
+  { "sensorId": "VS-01", "distance": 9,1, "detected": true, "timestamp": "2026-04-28 15:37:40" }
+,
+  { "sensorId": "VS-01", "distance": 7,8, "detected": true, "timestamp": "2026-04-28 15:37:43" }
+] }
