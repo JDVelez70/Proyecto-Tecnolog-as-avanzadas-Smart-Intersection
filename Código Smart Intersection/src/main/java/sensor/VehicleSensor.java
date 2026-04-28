@@ -1,15 +1,10 @@
 package sensor;
 
-/**
- * VehicleSensor — GRASP: Information Expert
- * Conoce el carril y el conteo de vehículos.
- * Procesa la señal del Arduino (HC-SR04) y determina si hay vehículo.
- */
 public class VehicleSensor extends Sensor {
 
     private int lane;
     private int vehicleCount;
-    private double lastDistance; // distancia leída desde Arduino (cm)
+    private double lastDistance; 
 
     private static final double DETECTION_THRESHOLD_CM = 20.0;
 
@@ -20,19 +15,11 @@ public class VehicleSensor extends Sensor {
         this.lastDistance = 999.0;
     }
 
-    /**
-     * Retorna la última distancia leída en cm.
-     * En simulación, se puede setear manualmente.
-     */
     @Override
     public double readData() {
         return lastDistance;
     }
 
-    /**
-     * GRASP: Information Expert — el sensor sabe si hay vehículo
-     * basado en la distancia y el umbral de detección.
-     */
     public boolean detectVehicle() {
         return lastDistance < DETECTION_THRESHOLD_CM;
     }

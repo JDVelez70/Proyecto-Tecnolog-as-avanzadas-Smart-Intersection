@@ -1,8 +1,4 @@
 package model;
-
-/**
- * Camera — OOP: Encapsula cámara de vigilancia de la intersección.
- */
 public class Camera {
 
     private String cameraId;

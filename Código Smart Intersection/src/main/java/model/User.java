@@ -1,9 +1,4 @@
 package model;
-
-/**
- * User — OOP: Representa al operador del sistema.
- * SOLID: SRP — solo contiene datos del usuario y acción de monitoreo.
- */
 public class User {
 
     private String userId;

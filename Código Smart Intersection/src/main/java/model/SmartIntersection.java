@@ -1,15 +1,9 @@
 package model;
-
-/**
- * SmartIntersection — GRASP: Controller (coordinador del dominio)
- * Representa la intersección inteligente y delega el flujo de tráfico.
- * SOLID: SRP — solo coordina el estado de la intersección.
- */
 public class SmartIntersection {
 
     private String intersectionId;
     private String location;
-    private String status; // "ACTIVE", "MAINTENANCE", "EMERGENCY"
+    private String status;
 
     public SmartIntersection(String intersectionId, String location) {
         this.intersectionId = intersectionId;

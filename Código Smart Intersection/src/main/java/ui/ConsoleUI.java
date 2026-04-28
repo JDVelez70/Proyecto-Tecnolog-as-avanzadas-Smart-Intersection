@@ -6,25 +6,23 @@ import model.*;
 import sensor.PedestrianSensor;
 import sensor.VehicleSensor;
 import persistence.IntersectionRepository;
-import policy.AdaptiveTimingPolicy;
-import policy.FixedTimingPolicy;
 
 import java.util.Date;
 import java.util.Scanner;
 
 /**
  * ConsoleUI — GRASP: Controller de interfaz + SOLID: SRP
- * Toda la interacción con el usuario ocurre aquí.
- * No contiene lógica de negocio: solo captura entrada y delega.
+ * Toda la interaccion con el usuario ocurre aqui.
+ * No contiene logica de negocio: solo captura entrada y delega.
  */
 public class ConsoleUI {
 
-    private final TrafficController trafficController;
-    private final ArduinoConnector  arduino;
+    private final TrafficController      trafficController;
+    private final ArduinoConnector       arduino;
     private final IntersectionRepository repository;
-    private final VehicleSensor vehicleSensor;
-    private final PedestrianSensor pedestrianSensor;
-    private final Scanner scanner;
+    private final VehicleSensor          vehicleSensor;
+    private final PedestrianSensor       pedestrianSensor;
+    private final Scanner                scanner;
     private boolean running;
 
     public ConsoleUI(TrafficController trafficController,
@@ -32,20 +30,26 @@ public class ConsoleUI {
                      IntersectionRepository repository,
                      VehicleSensor vehicleSensor,
                      PedestrianSensor pedestrianSensor) {
-        this.trafficController  = trafficController;
-        this.arduino            = arduino;
-        this.repository         = repository;
-        this.vehicleSensor      = vehicleSensor;
-        this.pedestrianSensor   = pedestrianSensor;
-        this.scanner            = new Scanner(System.in);
-        this.running            = false;
+        this.trafficController = trafficController;
+        this.arduino           = arduino;
+        this.repository        = repository;
+        this.vehicleSensor     = vehicleSensor;
+        this.pedestrianSensor  = pedestrianSensor;
+        this.scanner           = new Scanner(System.in);
+        this.running           = false;
     }
 
-    /** Punto de entrada principal de la UI */
     public void start() {
         running = true;
         printBanner();
         arduino.connect();
+
+        // Registrar callback: cada vez que CycleController cambia el color,
+        // ConsoleUI envia el comando al Arduino automaticamente
+        trafficController.getCycleController().setLedCallback(
+            color -> arduino.sendLedCommand(color)
+        );
+
         System.out.println();
 
         while (running) {
@@ -55,13 +59,13 @@ public class ConsoleUI {
         }
 
         arduino.disconnect();
-        System.out.println("\n[SISTEMA] Sesión finalizada. ¡Hasta pronto!");
+        System.out.println("\n[SISTEMA] Sesion finalizada. Hasta pronto!");
     }
 
     private void handleOption(String option) {
         System.out.println();
         switch (option) {
-            case "1" -> simulateVehicleDetection();
+            case "1" -> readSensorLive();
             case "2" -> simulatePedestrianRequest();
             case "3" -> simulateEmergencyVehicle();
             case "4" -> changeMode();
@@ -70,52 +74,82 @@ public class ConsoleUI {
             case "7" -> generateReport();
             case "8" -> runNormalCycle();
             case "0" -> running = false;
-            default  -> System.out.println("  ⚠️  Opción no válida. Intenta de nuevo.");
+            default  -> System.out.println("  Opcion no valida. Intenta de nuevo.");
         }
         System.out.println();
     }
 
-    // ─── UC1 (IMPLEMENTADO) ─────────────────────────────────────────────────
+    // ─── UC1 (IMPLEMENTADO) ──────────────────────────────────────────────────
 
     /**
-     * UC1: Detección de Vehículo → Control de Semáforo (CASO IMPLEMENTADO)
-     * Simula la lectura del HC-SR04 y activa el semáforo.
+     * UC1: Lee el HC-SR04 en tiempo real sin limite de tiempo.
+     * - Sin delays: readDistance() regula la cadencia esperando el proximo dato.
+     * - Siempre descarta lecturas viejas del buffer (logica en ArduinoConnector).
+     * - Solo envia comando al Arduino cuando cambia el estado (verde <-> rojo).
+     * - Escribe Q + ENTER para volver al menu.
      */
-    private void simulateVehicleDetection() {
-        System.out.println("╔══════════════════════════════════════╗");
-        System.out.println("║  UC1: DETECCIÓN DE VEHÍCULO [ACTIVO] ║");
-        System.out.println("╚══════════════════════════════════════╝");
-        System.out.print("  Ingresa distancia simulada (cm) [ej: 15 = vehículo / 50 = libre]: ");
+    private void readSensorLive() {
+        System.out.println("╔══════════════════════════════════════════════════╗");
+        System.out.println("║       UC1: DETECCION DE VEHICULO [ACTIVO]        ║");
+        System.out.println("║  Sensor HC-SR04 leyendo en tiempo real.          ║");
+        System.out.println("║  Acerca un objeto al sensor para detectarlo.     ║");
+        System.out.println("║  Escribe  Q + ENTER  para volver al menu.        ║");
+        System.out.println("╚══════════════════════════════════════════════════╝");
+        System.out.println();
 
-        try {
-            double dist = Double.parseDouble(scanner.nextLine().trim());
-            arduino.setSimulatedDistance(dist);
+        // Hilo escucha Q para detener el loop
+        final boolean[] stop = { false };
+        Thread inputThread = new Thread(() -> {
+            try {
+                while (!stop[0]) {
+                    if (scanner.hasNextLine()) {
+                        String line = scanner.nextLine().trim();
+                        if (line.equalsIgnoreCase("Q")) {
+                            stop[0] = true;
+                        }
+                    }
+                }
+            } catch (Exception ignored) {}
+        });
+        inputThread.setDaemon(true);
+        inputThread.start();
+
+        String lastLedColor = "";
+
+        while (!stop[0]) {
             double reading = arduino.readDistance();
 
-            System.out.println("  [HC-SR04] Distancia leída: " + reading + " cm");
+            // -1 significa que aun no hay dato nuevo, reintentar de inmediato
+            if (reading < 0) continue;
 
-            // Delegar al controlador → lógica → persistencia
-            trafficController.receiveSensorData(reading);
+            boolean detected = reading < 20.0;
+            String  ledColor = detected ? "GREEN" : "RED";
 
-            // Enviar comando LED al Arduino
-            String ledColor = (reading < 20) ? "GREEN" : "RED";
-            arduino.sendLedCommand(ledColor);
+            System.out.printf("  [HC-SR04] %6.1f cm  |  %s%n",
+                reading,
+                detected ? "VEHICULO DETECTADO  ->  LED VERDE"
+                         : "Libre               ->  LED ROJO");
 
-        } catch (NumberFormatException e) {
-            System.out.println("  ❌ Valor inválido. Ingresa un número.");
+            // Enviar al Arduino solo cuando el estado cambia
+            if (!ledColor.equals(lastLedColor)) {
+                trafficController.receiveSensorData(reading);
+                arduino.sendLedCommand(ledColor);
+                lastLedColor = ledColor;
+            }
+            // Sin sleep — readDistance() ya espera el proximo dato del Arduino
         }
+
+        arduino.sendLedCommand("RED");
+        System.out.println("\n  [UC1] Monitoreo detenido. Volviendo al menu...");
     }
 
     // ─── UC2 ─────────────────────────────────────────────────────────────────
 
-    /**
-     * UC2: Solicitud Peatonal
-     */
     private void simulatePedestrianRequest() {
         System.out.println("╔════════════════════════════════════════╗");
-        System.out.println("║  UC2: SOLICITUD PEATONAL (DEFINIDO)    ║");
+        System.out.println("║  UC2: SOLICITUD PEATONAL               ║");
         System.out.println("╚════════════════════════════════════════╝");
-        System.out.println("  Simulando presión del botón peatonal...");
+        System.out.println("  Simulando presion del boton peatonal...");
 
         pedestrianSensor.press();
         if (pedestrianSensor.detectPedestrian()) {
@@ -128,14 +162,11 @@ public class ConsoleUI {
 
     // ─── UC3 ─────────────────────────────────────────────────────────────────
 
-    /**
-     * UC3: Vehículo de Emergencia
-     */
     private void simulateEmergencyVehicle() {
         System.out.println("╔════════════════════════════════════════╗");
-        System.out.println("║  UC3: VEHÍCULO DE EMERGENCIA (DEFINIDO)║");
+        System.out.println("║  UC3: VEHICULO DE EMERGENCIA           ║");
         System.out.println("╚════════════════════════════════════════╝");
-        System.out.print("  Placa del vehículo de emergencia: ");
+        System.out.print("  Placa del vehiculo de emergencia: ");
         String plate = scanner.nextLine().trim();
 
         EmergencyVehicle ev = new EmergencyVehicle(plate, "AMBULANCIA", 80.0, 1);
@@ -154,13 +185,13 @@ public class ConsoleUI {
 
     private void showStatus() {
         System.out.println("══════════════ ESTADO DEL SISTEMA ══════════════");
-        System.out.println("  Controlador : " + trafficController);
-        System.out.println("  Semáforo    : " + trafficController.getCycleController().getTrafficLight());
-        System.out.println("  Ciclo actual: " + trafficController.getCycleController().getCurrentState());
-        System.out.println("  Política    : " + trafficController.getCycleController().getTimingPolicy());
-        System.out.println("  Sensor auto : " + vehicleSensor);
+        System.out.println("  Controlador  : " + trafficController);
+        System.out.println("  Semaforo     : " + trafficController.getCycleController().getTrafficLight());
+        System.out.println("  Estado ciclo : " + trafficController.getCycleController().getCurrentState());
+        System.out.println("  Politica     : " + trafficController.getCycleController().getTimingPolicy());
+        System.out.println("  Sensor auto  : " + vehicleSensor);
         System.out.println("  Sensor peatón: " + pedestrianSensor);
-        System.out.println("  Arduino     : " + arduino);
+        System.out.println("  Arduino      : " + arduino);
         System.out.println("═════════════════════════════════════════════════");
     }
 
@@ -170,8 +201,8 @@ public class ConsoleUI {
     }
 
     private void generateReport() {
-        int count = vehicleSensor.getVehicleCount();
-        double density = count / 5.0; // veh/min aproximado
+        int    count   = vehicleSensor.getVehicleCount();
+        double density = count / 5.0;
         TrafficReport report = new TrafficReport(
             "RPT-" + System.currentTimeMillis(), new Date(), density
         );
@@ -181,10 +212,9 @@ public class ConsoleUI {
 
     private void runNormalCycle() {
         System.out.println("  Ejecutando ciclo normal completo...");
+        System.out.println("  VERDE -> AMARILLO -> ROJO  (el Arduino cambia en cada paso)");
         trafficController.getCycleController().runNormalCycle();
-        arduino.sendLedCommand(
-            trafficController.getCycleController().getTrafficLight().getCurrentColor()
-        );
+        // El LedCallback se encarga de enviar cada color al Arduino automaticamente
     }
 
     // ─── UI HELPERS ──────────────────────────────────────────────────────────
@@ -198,18 +228,18 @@ public class ConsoleUI {
 
     private void printMenu() {
         System.out.println("┌─────────────────────────────────────────────┐");
-        System.out.println("│                   MENÚ PRINCIPAL             │");
+        System.out.println("│                 MENU PRINCIPAL               │");
         System.out.println("├─────────────────────────────────────────────┤");
-        System.out.println("│  [1] Simular detección de vehículo  ★ UC1   │");
+        System.out.println("│  [1] Leer sensor HC-SR04 en vivo    ★ UC1   │");
         System.out.println("│  [2] Simular solicitud peatonal       UC2   │");
-        System.out.println("│  [3] Simular vehículo de emergencia   UC3   │");
+        System.out.println("│  [3] Simular vehiculo de emergencia   UC3   │");
         System.out.println("│  [4] Cambiar modo del controlador           │");
         System.out.println("│  [5] Ver estado del sistema                 │");
         System.out.println("│  [6] Ver datos persistidos                  │");
-        System.out.println("│  [7] Generar reporte de tráfico             │");
+        System.out.println("│  [7] Generar reporte de trafico             │");
         System.out.println("│  [8] Ejecutar ciclo normal completo         │");
         System.out.println("│  [0] Salir                                  │");
         System.out.println("└─────────────────────────────────────────────┘");
-        System.out.print("Opción: ");
+        System.out.print("Opcion: ");
     }
 }

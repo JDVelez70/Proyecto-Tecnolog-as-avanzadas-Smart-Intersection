@@ -1,11 +1,6 @@
 package model;
-
 import java.util.Date;
 
-/**
- * TrafficReport — OOP: Encapsula datos del reporte de tráfico.
- * SOLID: SRP — solo genera y almacena datos del reporte.
- */
 public class TrafficReport {
 
     private String reportId;

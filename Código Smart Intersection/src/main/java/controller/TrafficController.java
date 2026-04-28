@@ -10,12 +10,6 @@ import persistence.IntersectionRepository;
 
 import java.util.Date;
 
-/**
- * TrafficController — GRASP: Controller principal del sistema.
- * Coordina sensores, semáforos, reportes y alertas.
- * SOLID: SRP — delega cada responsabilidad a la clase correspondiente.
- * SOLID: DIP — depende de abstracciones (Sensor, TimingPolicy).
- */
 public class TrafficController {
 
     private String controllerId;
@@ -41,10 +35,6 @@ public class TrafficController {
         this.cycleController = new CycleController(trafficLight, new FixedTimingPolicy());
     }
 
-    /**
-     * GRASP: Information Expert — recibe dato del sensor y decide qué hacer.
-     * UC1 (implementado): Lee señal del VehicleSensor y activa semáforo.
-     */
     public void receiveSensorData(double distanceCm) {
         vehicleSensor.updateDistance(distanceCm);
         boolean detected = vehicleSensor.detectVehicle();
@@ -54,7 +44,7 @@ public class TrafficController {
 
         if (detected) {
             optimizeTraffic();
-            // Persistir la lectura
+
             repository.saveSensorReading(
                 vehicleSensor.getSensorId(),
                 distanceCm,
@@ -64,10 +54,6 @@ public class TrafficController {
         }
     }
 
-    /**
-     * GRASP: Controller — delega al CycleController la lógica del semáforo.
-     * Si hay muchos vehículos → cambia a política adaptativa.
-     */
     public void optimizeTraffic() {
         int count = vehicleSensor.getVehicleCount();
         System.out.println("[CTRL] Optimizando tráfico. Vehículos detectados: " + count);
@@ -79,23 +65,15 @@ public class TrafficController {
         }
 
         cycleController.changeLights("GREEN");
-
-        // Persistir acción
         repository.saveAction(controllerId, "LIGHT_GREEN", new Date());
     }
 
-    /**
-     * GRASP: Controller — delega la solicitud peatonal al CycleController.
-     */
     public void delegateToCycle(PedestrianRequest request) {
         System.out.println("[CTRL] Delegando solicitud peatonal al CycleController...");
         cycleController.handlePedestrianRequest(request);
         repository.saveAction(controllerId, "PEDESTRIAN_CYCLE", new Date());
     }
 
-    /**
-     * Activa modo emergencia: semáforo en rojo para dar paso al vehículo de emergencia.
-     */
     public void activateEmergencyMode(EmergencyVehicle ev) {
         this.mode = "EMERGENCY";
         ev.requestPriority();

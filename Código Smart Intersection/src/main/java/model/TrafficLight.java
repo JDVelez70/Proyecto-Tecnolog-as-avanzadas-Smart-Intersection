@@ -1,9 +1,4 @@
 package model;
-
-/**
- * TrafficLight — OOP: Encapsulamiento del estado del semáforo.
- * SOLID: SRP — solo maneja el estado y color del semáforo.
- */
 public class TrafficLight {
 
     private String lightId;

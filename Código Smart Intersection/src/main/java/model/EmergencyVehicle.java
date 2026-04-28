@@ -1,10 +1,4 @@
 package model;
-
-/**
- * EmergencyVehicle — OOP: Herencia de Vehicle.
- * SOLID: Liskov Substitution — puede reemplazar a Vehicle en cualquier contexto.
- * GRASP: Polymorphism — comportamiento distinto al de un vehículo normal.
- */
 public class EmergencyVehicle extends Vehicle {
 
     private int priorityLevel; // 1 = máxima prioridad

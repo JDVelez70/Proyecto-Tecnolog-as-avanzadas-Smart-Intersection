@@ -3,11 +3,6 @@ package sensor;
 import model.PedestrianRequest;
 import java.util.Date;
 
-/**
- * PedestrianSensor — GRASP: Creator
- * Crea PedestrianRequest cuando el botón es presionado.
- * Encapsula la lógica del sensor de cruce peatonal.
- */
 public class PedestrianSensor extends Sensor {
 
     private String crosswalkId;
@@ -24,12 +19,8 @@ public class PedestrianSensor extends Sensor {
         return isPressed ? 1.0 : 0.0;
     }
 
-    /**
-     * GRASP: Creator — PedestrianSensor crea PedestrianRequest
-     * porque tiene los datos necesarios para construirlo.
-     */
     public PedestrianRequest createRequest() {
-        isPressed = false; // Resetear después de crear la solicitud
+        isPressed = false; 
         return new PedestrianRequest(
             "REQ-" + System.currentTimeMillis(),
             "PENDING",

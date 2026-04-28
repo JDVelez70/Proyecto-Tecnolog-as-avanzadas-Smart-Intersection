@@ -1,10 +1,4 @@
 package policy;
-
-/**
- * FixedTimingPolicy — GRASP: Low Coupling
- * Política de tiempo fijo para semáforos.
- * No depende de ningún estado externo.
- */
 public class FixedTimingPolicy implements TimingPolicy {
 
     private static final int GREEN_TIME = 30;

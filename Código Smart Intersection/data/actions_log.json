@@ -1,3 +1,161 @@
 { "actions": [
   { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-20 22:04:12" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:48:46" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:50:07" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:57:05" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:57:12" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:57:43" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:57:47" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:57:51" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:57:53" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 11:58:18" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:01:37" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:07:47" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:09:38" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:09:50" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:12:49" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:15:15" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:27:06" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:27:45" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:27:59" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:28:05" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:28:15" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:32:02" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:32:09" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 14:32:19" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 16:01:10" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 16:36:12" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:35:27" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:35:56" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:36:21" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:36:29" }
+,
+  { "controllerId": "SYSTEM", "action": "REPORT_GENERATED", "timestamp": "2026-04-21 19:38:11" }
+,
+  { "controllerId": "TC-001", "action": "PEDESTRIAN_CYCLE", "timestamp": "2026-04-21 19:38:17" }
+,
+  { "controllerId": "TC-001", "action": "EMERGENCY_MODE", "timestamp": "2026-04-21 19:38:27" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:42:26" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:42:40" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:42:52" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:43:05" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:44:18" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:44:35" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:58:22" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:59:26" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:59:32" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:59:37" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 19:59:58" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:00:20" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:00:23" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:18:02" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:18:07" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:18:50" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:18:55" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:19:03" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:19:35" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:19:43" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:19:50" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:23:08" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 20:23:12" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 21:30:11" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 21:30:16" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 21:30:20" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 21:36:02" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 21:36:06" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-21 21:36:09" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:05:46" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:05:52" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:05:57" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:06:03" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:06:42" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:06:45" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:06:51" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:06:56" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:07:07" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:07:14" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:07:17" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:07:24" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:07:32" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 09:07:40" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 15:15:52" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 15:15:53" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 15:15:55" }
+,
+  { "controllerId": "TC-001", "action": "LIGHT_GREEN", "timestamp": "2026-04-28 15:16:02" }
 ] }

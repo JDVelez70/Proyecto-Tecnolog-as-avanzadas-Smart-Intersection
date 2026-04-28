@@ -1,13 +1,9 @@
 package model;
 
-/**
- * Alert — OOP: Representa alertas del sistema.
- * SOLID: SRP — solo maneja datos y envío de la alerta.
- */
 public class Alert {
 
     private String alertId;
-    private String severity;  // "LOW", "MEDIUM", "HIGH", "CRITICAL"
+    private String severity; 
     private String message;
 
     public Alert(String alertId, String severity, String message) {

@@ -1,9 +1,4 @@
 package model;
-
-/**
- * Vehicle — OOP: Abstracción de un vehículo en la intersección.
- * SOLID: Single Responsibility — solo conoce datos del vehículo.
- */
 public class Vehicle {
 
     protected String plateNumber;

@@ -1,10 +1,5 @@
 package sensor;
 
-/**
- * Sensor — GRASP: Polymorphism + SOLID: Liskov Substitution
- * Clase abstracta base para todos los sensores del sistema.
- * Define el contrato común sin imponer implementación.
- */
 public abstract class Sensor {
 
     protected String sensorId;
@@ -15,10 +10,6 @@ public abstract class Sensor {
         this.status = "ACTIVE";
     }
 
-    /**
-     * Método abstracto: cada sensor implementa su propia lectura.
-     * Retorna el valor leído (distancia, conteo, presión, etc.)
-     */
     public abstract double readData();
 
     public String getSensorId() { return sensorId; }

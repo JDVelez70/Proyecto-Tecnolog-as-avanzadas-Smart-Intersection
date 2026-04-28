@@ -4,30 +4,61 @@ import model.PedestrianRequest;
 import model.TrafficLight;
 import policy.TimingPolicy;
 
-/**
- * CycleController — GRASP: Controller
- * Maneja el ciclo del semáforo: verde, amarillo, rojo, ciclo seguro peatonal.
- * SOLID: OCP — recibe TimingPolicy por inyección, no conoce implementaciones.
- * SOLID: DIP — depende de la abstracción TimingPolicy, no de clases concretas.
- */
 public class CycleController {
 
-    private String currentState; // "GREEN", "YELLOW", "RED", "SAFE_CYCLE"
-    private TimingPolicy timingPolicy;
-    private TrafficLight trafficLight;
+    public interface LedCallback {
+        void onColorChange(String color);
+    }
+
+    private String        currentState;
+    private TimingPolicy  timingPolicy;
+    private TrafficLight  trafficLight;
+    private LedCallback   ledCallback; // puede ser null si no se necesita
 
     public CycleController(TrafficLight trafficLight, TimingPolicy timingPolicy) {
         this.trafficLight = trafficLight;
         this.timingPolicy = timingPolicy;
         this.currentState = "RED";
+        this.ledCallback  = null;
     }
 
-    /**
-     * GRASP: Controller — maneja la solicitud peatonal y delega el ciclo seguro.
-     */
+    public void setLedCallback(LedCallback cb) {
+        this.ledCallback = cb;
+    }
+
+    public void changeLights(String color) {
+        this.currentState = color;
+        trafficLight.changeLight(color);
+        if (ledCallback != null) {
+            ledCallback.onColorChange(color);
+        }
+    }
+
+    private void changeLightsAndWait(String color, int seconds) {
+        changeLights(color);
+        System.out.printf("    [%s durante %ds]%n", color, seconds);
+        sleep(seconds * 1000);
+    }
+
+    public void runNormalCycle() {
+        System.out.println("[CICLO] Ejecutando ciclo normal...");
+        changeLightsAndWait("GREEN",  timingPolicy.getGreenTime());
+        changeLightsAndWait("YELLOW", 3);
+        changeLightsAndWait("RED",    timingPolicy.getRedTime());
+        System.out.println("[CICLO] Ciclo normal completado.");
+    }
+
+    public void startSafeCycle() {
+        System.out.println("[CICLO] Iniciando ciclo seguro para peatones...");
+        changeLightsAndWait("YELLOW", 3);
+        changeLightsAndWait("RED",    timingPolicy.getRedTime());
+        System.out.println("[CICLO] Cruce seguro completado. Reanudando trafico...");
+        changeLights("GREEN");
+    }
+
     public void handlePedestrianRequest(PedestrianRequest request) {
         if (request == null || !request.validateRequest()) {
-            System.out.println("[CICLO] Solicitud peatonal inválida o ya procesada.");
+            System.out.println("[CICLO] Solicitud peatonal invalida o ya procesada.");
             return;
         }
         System.out.println("[CICLO] Solicitud peatonal recibida: " + request.getRequestId());
@@ -35,51 +66,15 @@ public class CycleController {
         request.markAsProcessed();
     }
 
-    /**
-     * Inicia el ciclo seguro de cruce peatonal.
-     * Semáforo en AMARILLO → RED con tiempo suficiente para cruzar.
-     */
-    public void startSafeCycle() {
-        System.out.println("[CICLO] Iniciando ciclo seguro para peatones...");
-        changeLights("YELLOW");
-        simulateDelay(3);
-        changeLights("RED");
-        System.out.println("[CICLO] ✅ Cruce seguro activo por " + timingPolicy.getRedTime() + "s");
-        simulateDelay(timingPolicy.getRedTime());
-        changeLights("GREEN");
-        currentState = "GREEN";
+    private void sleep(int ms) {
+        try { Thread.sleep(ms); } catch (InterruptedException ignored) {}
     }
 
-    /**
-     * Cambia el semáforo al color especificado y actualiza el estado.
-     */
-    public void changeLights(String color) {
-        this.currentState = color;
-        trafficLight.changeLight(color);
-    }
+    public String        getCurrentState()  { return currentState; }
+    public TimingPolicy  getTimingPolicy()  { return timingPolicy; }
+    public TrafficLight  getTrafficLight()  { return trafficLight; }
 
-    /**
-     * Ejecuta un ciclo normal: verde → amarillo → rojo.
-     */
-    public void runNormalCycle() {
-        System.out.println("[CICLO] Ejecutando ciclo normal...");
-        changeLights("GREEN");
-        simulateDelay(timingPolicy.getGreenTime());
-        changeLights("YELLOW");
-        simulateDelay(3);
-        changeLights("RED");
-        simulateDelay(timingPolicy.getRedTime());
-    }
-
-    /** Simula espera (en consola muestra el tiempo, no bloquea realmente) */
-    private void simulateDelay(int seconds) {
-        System.out.println("    [⏱ simulando " + seconds + "s]");
-    }
-
-    public String getCurrentState()   { return currentState; }
-    public TimingPolicy getTimingPolicy() { return timingPolicy; }
     public void setTimingPolicy(TimingPolicy policy) { this.timingPolicy = policy; }
-    public TrafficLight getTrafficLight() { return trafficLight; }
 
     @Override
     public String toString() {

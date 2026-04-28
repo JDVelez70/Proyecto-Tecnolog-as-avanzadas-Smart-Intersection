@@ -1,11 +1,6 @@
 package model;
-
 import java.util.Date;
 
-/**
- * PedestrianRequest — OOP: Representa solicitud de cruce peatonal.
- * SOLID: SRP — solo contiene datos y lógica de validación de la solicitud.
- */
 public class PedestrianRequest {
 
     private String requestId;
